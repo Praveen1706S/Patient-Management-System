@@ -1,5 +1,6 @@
 package com.patientservice.mapper;
 
+import com.patientservice.Dto.PatientRequestDto;
 import com.patientservice.Dto.PatientResponseDto;
 import com.patientservice.entity.Patient;
 import org.springframework.stereotype.Component;
@@ -31,5 +32,17 @@ public class PatientMapper {
         patient.setDateOfBirth(patientDto.getDateOfBirth());
 
         return patient;
+    }
+
+
+    public Patient toPatientsrequest( PatientRequestDto patientRequestDto){
+        Patient patientDto = new Patient();
+        patientDto.setName(patientRequestDto.getName());
+        patientDto.setEmail(patientRequestDto.getEmail());
+        patientDto.setAddress(patientRequestDto.getAddress());
+        patientDto.setDateOfBirth(patientRequestDto.getDateOfBirth());
+        patientDto.setRegisterDate(patientRequestDto.getRegisterDate());
+
+        return patientDto;
     }
 }
