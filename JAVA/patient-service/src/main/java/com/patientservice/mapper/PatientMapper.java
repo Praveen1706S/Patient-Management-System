@@ -5,6 +5,7 @@ import com.patientservice.Dto.PatientResponseDto;
 import com.patientservice.entity.Patient;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Component
@@ -17,7 +18,7 @@ public class PatientMapper {
         patientDto.setName(patient.getName());
         patientDto.setEmail(patient.getEmail());
         patientDto.setAddress(patient.getAddress());
-        patientDto.setDateOfBirth(patient.getDateOfBirth());
+        patientDto.setDateOfBirth(patient.getDateOfBirth().toString());
 
         return patientDto;
     }
@@ -29,7 +30,7 @@ public class PatientMapper {
         patient.setName(patientDto.getName());
         patient.setEmail(patientDto.getEmail());
         patient.setAddress(patientDto.getAddress());
-        patient.setDateOfBirth(patientDto.getDateOfBirth());
+        patient.setDateOfBirth(LocalDate.parse(patientDto.getDateOfBirth()));
 
         return patient;
     }
@@ -40,8 +41,8 @@ public class PatientMapper {
         patientDto.setName(patientRequestDto.getName());
         patientDto.setEmail(patientRequestDto.getEmail());
         patientDto.setAddress(patientRequestDto.getAddress());
-        patientDto.setDateOfBirth(patientRequestDto.getDateOfBirth());
-        patientDto.setRegisterDate(patientRequestDto.getRegisterDate());
+        patientDto.setDateOfBirth(LocalDate.parse(patientRequestDto.getDateOfBirth()));
+        patientDto.setRegisterDate(LocalDate.parse(patientRequestDto.getRegisterDate()));
 
         return patientDto;
     }

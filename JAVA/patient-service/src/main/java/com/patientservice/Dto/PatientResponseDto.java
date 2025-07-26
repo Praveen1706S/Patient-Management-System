@@ -20,6 +20,6 @@ public class PatientResponseDto {
 
     private String address;
 
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
 }

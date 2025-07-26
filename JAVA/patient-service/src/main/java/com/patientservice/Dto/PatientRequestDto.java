@@ -1,7 +1,9 @@
 package com.patientservice.Dto;
 
+import com.patientservice.Dto.validation.CreatePatientValidationGroup;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -15,23 +17,23 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class PatientRequestDto {
 
-    @NotNull(message = "Name is required")
+    @NotBlank(message = "Name is required")
     @Size(max = 100, message = "Name cannot exceed 100 characters")
     private String name;
 
 
-    @NotNull(message = "Email is required")
+    @NotBlank(message = "Email is required")
     @Email(message =  " email should be valid")
     private String email;
 
 
-    @NotNull(message =  "Address is required")
+    @NotBlank(message =  "Address is required")
     private String address;
 
-    @NotNull(message = "Date of birth required")
-    private LocalDate dateOfBirth;
+    @NotBlank(message = "Date of birth required")
+    private String dateOfBirth;
 
-    @NotNull(message = "Registered date is required")
-    private LocalDate registerDate;
+    @NotBlank(groups = CreatePatientValidationGroup.class, message = "Registered date is required")
+    private String registerDate;
 
 }
